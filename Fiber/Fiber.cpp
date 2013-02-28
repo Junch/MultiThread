@@ -220,6 +220,8 @@ VOID __stdcall ReadFiberFunc( LPVOID lpParameter )
          break;
       }
 
+      printf("data read\n");
+
       //
       // if we reached EOF, break
       //
@@ -287,6 +289,8 @@ VOID __stdcall WriteFiberFunc(LPVOID lpParameter)
          //
          break;
       }
+
+      printf("data written\n");
 
       //
       // Update number of bytes processed in the fiber data structure
