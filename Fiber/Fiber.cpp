@@ -1,5 +1,7 @@
 // Fiber.cpp : Defines the entry point for the console application.
 // http://msdn.microsoft.com/en-us/library/windows/desktop/ms686919(v=vs.85).aspx
+// http://en.wikipedia.org/wiki/Coroutine
+// http://en.wikipedia.org/wiki/Fiber_(computer_science)
 //
 
 #include "stdafx.h"
