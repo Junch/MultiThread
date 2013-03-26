@@ -10,9 +10,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef WIN32
-#pragma comment(lib, "pthreadVC2.lib")
+#if defined(WIN32) || defined(WIN64)
+#include <windows.h>
+#define sleep(n) Sleep(1000 * (n))
+#else
+#include <unistd.h>
 #endif
+
+#pragma comment(lib, "pthreadVC2.lib")
 
 #define NUM_THREADS	8
 
@@ -22,11 +27,8 @@ void *PrintHello(void *threadid)
 {
     int *id_ptr, taskid;
 
-#ifdef WIN32
-    _sleep(1);
-#else
     sleep(1);
-#endif
+
     id_ptr = (int *) threadid;
     taskid = *id_ptr;
     printf("Thread %d: %s\n", taskid, messages[taskid]);

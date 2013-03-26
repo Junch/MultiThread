@@ -10,6 +10,14 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#if defined(WIN32) || defined(WIN64)
+#include <windows.h>
+#define sleep(n) Sleep(1000 * (n))
+#else
+#include <unistd.h>
+#endif
+
 #pragma comment(lib, "pthreadVC2.lib")
 
 #define NUM_THREADS	8
@@ -31,7 +39,7 @@ void *PrintHello(void *threadarg)
     char *hello_msg;
     struct thread_data *my_data;
 
-    _sleep(1);
+    sleep(1);
     my_data = (struct thread_data *) threadarg;
     taskid = my_data->thread_id;
     sum = my_data->sum;

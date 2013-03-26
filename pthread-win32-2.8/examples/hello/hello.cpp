@@ -7,9 +7,7 @@
 #include <stdlib.h>
 #define NUM_THREADS     5
 
-#ifdef WIN32
 #pragma comment(lib, "pthreadVC2.lib")
-#endif
 
 void *PrintHello(void *threadid)
 {
