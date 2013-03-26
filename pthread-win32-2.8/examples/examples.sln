@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hello_arg2", "hello_arg2\he
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "join", "join\join.vcxproj", "{C95AFF6E-F191-418B-B5CB-412B542E5454}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dotprod_serial", "dotprod_serial\dotprod_serial.vcxproj", "{025E591D-9552-4EC1-875F-14929160D057}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dotprod_mutex", "dotprod_mutex\dotprod_mutex.vcxproj", "{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +35,14 @@ Global
 		{C95AFF6E-F191-418B-B5CB-412B542E5454}.Debug|Win32.Build.0 = Debug|Win32
 		{C95AFF6E-F191-418B-B5CB-412B542E5454}.Release|Win32.ActiveCfg = Release|Win32
 		{C95AFF6E-F191-418B-B5CB-412B542E5454}.Release|Win32.Build.0 = Release|Win32
+		{025E591D-9552-4EC1-875F-14929160D057}.Debug|Win32.ActiveCfg = Debug|Win32
+		{025E591D-9552-4EC1-875F-14929160D057}.Debug|Win32.Build.0 = Debug|Win32
+		{025E591D-9552-4EC1-875F-14929160D057}.Release|Win32.ActiveCfg = Release|Win32
+		{025E591D-9552-4EC1-875F-14929160D057}.Release|Win32.Build.0 = Release|Win32
+		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Debug|Win32.Build.0 = Debug|Win32
+		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Release|Win32.ActiveCfg = Release|Win32
+		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
