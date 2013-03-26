@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dotprod_serial", "dotprod_s
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dotprod_mutex", "dotprod_mutex\dotprod_mutex.vcxproj", "{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "condvar", "condvar\condvar.vcxproj", "{73878DFD-7B13-4DD6-8F73-199F51B4B888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -43,6 +45,10 @@ Global
 		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Debug|Win32.Build.0 = Debug|Win32
 		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Release|Win32.ActiveCfg = Release|Win32
 		{60F437B2-8F6E-4562-9F7B-D146DAC41BF4}.Release|Win32.Build.0 = Release|Win32
+		{73878DFD-7B13-4DD6-8F73-199F51B4B888}.Debug|Win32.ActiveCfg = Debug|Win32
+		{73878DFD-7B13-4DD6-8F73-199F51B4B888}.Debug|Win32.Build.0 = Debug|Win32
+		{73878DFD-7B13-4DD6-8F73-199F51B4B888}.Release|Win32.ActiveCfg = Release|Win32
+		{73878DFD-7B13-4DD6-8F73-199F51B4B888}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
