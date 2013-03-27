@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "condvar", "condvar\condvar.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "producer", "producer\producer.vcxproj", "{78AF135B-5061-4808-A2BB-1C3F15F7E74D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "producer2", "producer2\producer2.vcxproj", "{7BBFD9C8-93AF-43BF-9F4E-9B8449A02FE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -55,6 +57,10 @@ Global
 		{78AF135B-5061-4808-A2BB-1C3F15F7E74D}.Debug|Win32.Build.0 = Debug|Win32
 		{78AF135B-5061-4808-A2BB-1C3F15F7E74D}.Release|Win32.ActiveCfg = Release|Win32
 		{78AF135B-5061-4808-A2BB-1C3F15F7E74D}.Release|Win32.Build.0 = Release|Win32
+		{7BBFD9C8-93AF-43BF-9F4E-9B8449A02FE6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7BBFD9C8-93AF-43BF-9F4E-9B8449A02FE6}.Debug|Win32.Build.0 = Debug|Win32
+		{7BBFD9C8-93AF-43BF-9F4E-9B8449A02FE6}.Release|Win32.ActiveCfg = Release|Win32
+		{7BBFD9C8-93AF-43BF-9F4E-9B8449A02FE6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
