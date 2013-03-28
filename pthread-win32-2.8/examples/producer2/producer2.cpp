@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <queue>
 
 #if defined(WIN32) || defined(WIN64)
 #include <windows.h>
@@ -12,16 +13,16 @@
 #pragma comment(lib, "pthreadVC2.lib")
 
 #define NUM_PRODUCER 2
-#define NUM_CONSUMER 2
+#define NUM_CONSUMER 1
 
 typedef struct Thread_data_
 {
-    int goods;
-    int maxgood;
+    unsigned int maxgood;
+    std::queue<int> q;
 }Thread_data;
 
 pthread_mutex_t mutexgoods;
-Thread_data buffer={0};
+Thread_data buffer;
 
 void *producer(void *arg)
 {
@@ -32,9 +33,9 @@ void *producer(void *arg)
 
     while(loop){
         pthread_mutex_lock(&mutexgoods);
-        if (buffer.goods < buffer.maxgood){
-            buffer.goods += 1;
-            printf("The current goods is %2d, producer=%d\n",buffer.goods, my_id);
+        if (buffer.q.size() < buffer.maxgood){
+            buffer.q.push(my_id);
+            printf("%2d goods left, producer=%d\n",buffer.q.size(), my_id);
         }
         pthread_mutex_unlock(&mutexgoods);
         sleep(1);
@@ -52,11 +53,17 @@ void *consumer(void *arg)
 
     while(loop){
         pthread_mutex_lock(&mutexgoods);
-        int num = rand() % 3;
+        //unsigned int num = rand() % 10;
+        unsigned int num = 10;
 
-        if (num > 0 && buffer.goods >= num){
-            buffer.goods -= num;
-            printf("Take %d, consumer=%d \n",num, my_id);
+        if (num > 0 && buffer.q.size() >= num){
+            for (unsigned int i=0; i<num; i++)
+            {
+                int k = buffer.q.front();
+                buffer.q.pop();
+                printf("%d",k);
+            }
+            printf(" consumer=%d \n", my_id);
         }
         pthread_mutex_unlock(&mutexgoods);
         sleep(1);
@@ -88,7 +95,7 @@ int main(int argc, char *argv[])
     for (int i=0; i<NUM_CONSUMER; i++)
         pthread_join(thdConsumer[i], &status);
 
-    printf("There are %d goods.\n", buffer.goods);
+    printf("There are %d goods.\n", buffer.q.size());
 
     pthread_mutex_destroy(&mutexgoods);
     pthread_exit(NULL);
