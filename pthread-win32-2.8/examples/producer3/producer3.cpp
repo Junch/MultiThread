@@ -20,6 +20,7 @@ typedef struct Thread_data_
     unsigned int maxgood;
     std::queue<int> q;
     pthread_mutex_t mutex;
+    pthread_cond_t  cond;
 }Thread_data;
 
 Thread_data buffer;
@@ -37,6 +38,10 @@ void *producer(void *arg)
             buffer.q.push(my_id);
             printf("%2d goods left, producer=%d\n",buffer.q.size(), my_id);
         }
+
+        if (buffer.q.size() == 10)
+            pthread_cond_signal(&buffer.cond);
+
         pthread_mutex_unlock(&buffer.mutex);
         sleep(1);
     }
@@ -55,16 +60,15 @@ void *consumer(void *arg)
         pthread_mutex_lock(&buffer.mutex);
         //unsigned int num = rand() % 10;
         unsigned int num = 10;
+        pthread_cond_wait(&buffer.cond, &buffer.mutex);
 
-        if (num > 0 && buffer.q.size() >= num){
-            for (unsigned int i=0; i<num; i++)
-            {
-                int k = buffer.q.front();
-                buffer.q.pop();
-                printf("%d",k);
-            }
-            printf(" consumer=%d \n", my_id);
+        for (unsigned int i=0; i<num; i++)
+        {
+            int k = buffer.q.front();
+            buffer.q.pop();
+            printf("%d",k);
         }
+        printf(" consumer=%d \n", my_id);
 
         pthread_mutex_unlock(&buffer.mutex);
         sleep(1);
@@ -80,6 +84,7 @@ int main(int argc, char *argv[])
     buffer.maxgood = 20;
 
     pthread_mutex_init(&buffer.mutex, NULL);
+    pthread_cond_init (&buffer.cond, NULL);
 
     pthread_t thdProducer[NUM_PRODUCER];
     for (int i=0; i<NUM_PRODUCER; i++)
@@ -99,5 +104,6 @@ int main(int argc, char *argv[])
     printf("There are %d goods.\n", buffer.q.size());
 
     pthread_mutex_destroy(&buffer.mutex);
+    pthread_cond_destroy(&buffer.cond);
     pthread_exit(NULL);
 }
