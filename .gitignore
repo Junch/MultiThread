@@ -110,3 +110,5 @@ Thumbs.db
 
 # Folder config file
 Desktop.ini
+
+build-win32/
