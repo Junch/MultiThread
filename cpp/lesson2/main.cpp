@@ -7,32 +7,32 @@ using namespace std;
 
 struct Sum
 {
-	int sum = 0;
-	mutex mu;
+    int sum = 0;
+    mutex mu;
 
-	void increase() {
-	   mu.lock();
-	   ++sum;
-	   mu.unlock();
-	}
+    void increase() {
+       mu.lock();
+       ++sum;
+       mu.unlock();
+    }
 };
 
 __declspec(noinline)
 void func(Sum &s) {
-	s.increase();
+    s.increase();
 }
 
 int main() {
-	vector<thread> threads;
-	Sum s;
-	for (int i=0; i<1000; ++i) {
-		threads.push_back(thread(func, ref(s)));
-	}
+    vector<thread> threads;
+    Sum s;
+    for (int i=0; i<1000; ++i) {
+        threads.push_back(thread(func, ref(s)));
+    }
 
-	for (thread& t: threads) {
-		t.join();
-	}
+    for (thread& t: threads) {
+        t.join();
+    }
 
-	cout << s.sum << endl;
-	return 0;
+    cout << s.sum << endl;
+    return 0;
 }
