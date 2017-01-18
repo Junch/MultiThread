@@ -4,7 +4,11 @@
 #include <thread>
 using namespace std;
 
+#ifdef _WIN32
 __declspec(noinline)
+#else
+__attribute__ ((noinline))
+#endif
 void func(int &s) {
     s++;
 }

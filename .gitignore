@@ -112,3 +112,4 @@ Thumbs.db
 Desktop.ini
 
 build-win32/
+_build/
